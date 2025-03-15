@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>أوامر Git الأساسية والمتقدمة</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        line-height: 1.8;
+        background: #3d3d3d;
+        color: #ffffff;
+        padding: 15px;
+      }
+      h1,
+      h2 {
+        color: #fe6f6f;
+      }
+      code {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        background: #000000;
+        color: #fe6f6f;
+        padding: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 8px;
+        margin: 10px 0;
+        direction: ltr;
+        position: relative;
+        text-align: center;
+      }
+      section {
+        margin-bottom: 30px;
+      }
+      button {
+        margin-right: 10px;
+        padding: 7px 10px;
+        background: #fe6f6f;
+        border: 2px solid #fe6f6f;
+        color: rgb(0, 0, 0);
+        width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      button:hover {
+        background: transparent;
+        color: #fe6f6f;
+      }
+    </style>
+    <script>
+      function copyToClipboard(text) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => alert("تم النسخ بنجاح!"));
+      }
+    </script>
+  </head>
+  <body>
+    <h1>أوامر Git الأساسية والمتقدمة</h1>
+
+    <section>
+      <h2>1. إعداد Git (مرة واحدة عند البدء)</h2>
+      <p>
+        إعداد معلومات المستخدم مثل الاسم والبريد الإلكتروني لضمان أن كل
+        التغييرات يتم تسجيلها باسمك.
+      </p>
+      <code
+        >git config --global user.name "اسمك"
+        <button onclick="copyToClipboard('git config --global user.name ')">
+          نسخ
+        </button></code
+      >
+
+      <p>تعيين اسم المستخدم الخاص بك.</p>
+      <code
+        >git config --global user.email "email@example.com"
+        <button onclick="copyToClipboard('git config --global user.email ')">
+          نسخ
+        </button></code
+      >
+
+      <p>تعيين البريد الإلكتروني الخاص بك.</p>
+      <code
+        >git config --list
+        <button onclick="copyToClipboard('git config --list')">
+          نسخ
+        </button></code
+      >
+
+      <p>عرض جميع الإعدادات الحالية لـ Git.</p>
+    </section>
+
+    <section>
+      <h2>2. إنشاء أو استنساخ مستودع (Repository)</h2>
+      <p>الأوامر لإنشاء مستودع جديد أو نسخ مستودع موجود من GitHub.</p>
+      <code
+        >git init
+        <button onclick="copyToClipboard('git init')">نسخ</button></code
+      >
+
+      <p>إنشاء مستودع Git جديد في المجلد الحالي.</p>
+      <code
+        >git clone [رابط_المستودع]
+        <button onclick="copyToClipboard('git clone [رابط_المستودع]')">
+          نسخ
+        </button></code
+      >
+
+      <p>استنساخ (نسخ) مستودع موجود من عنوان URL المحدد.</p>
+    </section>
+
+    <section>
+      <h2>3. إضافة الملفات وتسجيل التعديلات</h2>
+      <p>
+        إضافة التغييرات إلى منطقة التهيئة (staging) ثم حفظها في سجل التعديلات
+        (commit).
+      </p>
+      <code
+        >git add .
+        <button onclick="copyToClipboard('git add .')">نسخ</button></code
+      >
+
+      <p>إضافة جميع الملفات الجديدة أو المعدلة إلى منطقة التهيئة.</p>
+      <code
+        >git add اسم_الملف
+        <button onclick="copyToClipboard('git add اسم_الملف')">
+          نسخ
+        </button></code
+      >
+
+      <p>إضافة ملف معين إلى منطقة التهيئة.</p>
+      <code
+        >git commit -m "وصف التعديلات"
+        <button onclick="copyToClipboard('git commit -m ')">نسخ</button></code
+      >
+
+      <p>تسجيل التغييرات مع رسالة توضيحية.</p>
+      <code
+        >git commit --amend -m "رسالة جديدة"
+        <button onclick="copyToClipboard('git commit --amend -m ')">
+          نسخ
+        </button></code
+      >
+
+      <p>تعديل آخر تسجيل تم مع رسالة جديدة.</p>
+    </section>
+
+    <section>
+      <h2>4. ربط المستودع المحلي بالبعيد (GitHub)</h2>
+      <p>ربط المستودع المحلي بمستودع GitHub لرفع التغييرات أو سحبها.</p>
+      <code
+        >git remote add origin [رابط_المستودع]
+        <button
+          onclick="copyToClipboard('git remote add origin [رابط_المستودع]')"
+        >
+          نسخ
+        </button></code
+      >
+
+      <p>إضافة رابط المستودع البعيد مع اسم "origin".</p>
+      <code
+        >git remote -v
+        <button onclick="copyToClipboard('git remote -v')">نسخ</button></code
+      >
+
+      <p>عرض روابط المستودعات البعيدة.</p>
+    </section>
+
+    <section>
+      <h2>5. رفع التغييرات إلى GitHub</h2>
+      <p>رفع التعديلات من المستودع المحلي إلى المستودع البعيد.</p>
+      <code
+        >git push origin master
+        <button onclick="copyToClipboard('git push origin master')">
+          نسخ
+        </button></code
+      >
+
+      <p>رفع التغييرات إلى الفرع الرئيسي في GitHub.</p>
+      <code
+        >git push origin اسم_الفرع
+        <button onclick="copyToClipboard('git push origin اسم_الفرع')">
+          نسخ
+        </button></code
+      >
+
+      <p>رفع التغييرات إلى فرع معين.</p>
+      <code
+        >git push --force
+        <button onclick="copyToClipboard('git push --force')">نسخ</button></code
+      >
+
+      <p>إجبار التحديث إذا حدث تعارض.</p>
+    </section>
+
+    <section>
+      <h2>6. سحب التحديثات من GitHub إلى جهازك</h2>
+      <p>سحب التغييرات من المستودع البعيد ودمجها مع الكود المحلي.</p>
+      <code
+        >git pull origin master
+        <button onclick="copyToClipboard('git pull origin master')">
+          نسخ
+        </button></code
+      >
+
+      <p>سحب التحديثات من الفرع الرئيسي ودمجها.</p>
+      <code
+        >git fetch
+        <button onclick="copyToClipboard('git fetch')">نسخ</button></code
+      >
+
+      <p>جلب التغييرات دون دمجها تلقائيًا.</p>
+    </section>
+  </body>
+</html>
